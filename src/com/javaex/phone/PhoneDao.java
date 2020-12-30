@@ -167,13 +167,13 @@ public class PhoneDao {
 
 	}
 	//검색
-public List<PhoneVo> phoneSearch(String searchWord) {
+public List<PhoneVo> phoneSearch(String Search) {
 		
 		List<PhoneVo> phoneVoList = new ArrayList<PhoneVo>();
 		
 		getConnection();
 		
-		searchWord = "%" + searchWord + "%";
+		Search = "%" + Search + "%";
 		
 		try {	
 			// 3. SQL문 준비 / 바인딩 / 실행
@@ -189,9 +189,9 @@ public List<PhoneVo> phoneSearch(String searchWord) {
 
 			pstmt = conn.prepareStatement(query);
 			
-			pstmt.setString(1, searchWord);
-			pstmt.setString(2, searchWord);
-			pstmt.setString(3, searchWord);
+			pstmt.setString(1, Search);
+			pstmt.setString(2, Search);
+			pstmt.setString(3, Search);
 			
 			rs = pstmt.executeQuery();
 	        
