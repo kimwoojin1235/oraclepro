@@ -16,7 +16,7 @@ public class PhoneApp {
 		PhoneDao phoneDao = new PhoneDao();
 		Scanner sc=new Scanner(System.in);
 		System.out.println("*********************************");
-		System.out.println("*        전화번호 관리 프로그램             *");
+		System.out.println("---------전화번호 관리 프로그램---------");
 		System.out.println("*********************************");
 		System.out.println(" ");
 		while(a) {	
