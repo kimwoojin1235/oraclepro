@@ -104,19 +104,19 @@ public class PhoneDao {
 				// 3. SQL문 준비 / 바인딩 / 실행
 				//UPDATE person SET name =?,hp=?,company=? WHERE person_id = ?				String query = "";
 				String query ="";
-				pstmt = conn.prepareStatement(query);
 				query += " UPDATE person ";
 				query += " SET name =?, ";
-				query += " hp=? ";
+				query += " hp=?, ";
 				query += " company=? ";
 				query += " WHERE person_id = ? ";
+				
 				pstmt = conn.prepareStatement(query);
+				
 				pstmt.setString(1,name);
-				pstmt.setString(2,hp );
+				pstmt.setString(2,hp);
 				pstmt.setString(3,company );
 				pstmt.setInt(4, personId);
-				System.out.println(query);
-				count = pstmt.executeUpdate(); // update
+				count = pstmt.executeUpdate();
 
 				// 4.결과처리
 				System.out.println("[DAO]: " + count + "건이 수정되었습니다.");
