@@ -97,7 +97,7 @@ public class PhoneDao {
 		
 		
 		//번호수정
-		public int personUpdate(PhoneVo phvo) {
+		public int personUpdate(int personId, String name, String hp, String company ) {
 			getConnection();
 			int count = 0;
 			try {
@@ -111,10 +111,11 @@ public class PhoneDao {
 				query += " company=? ";
 				query += " WHERE person_id = ? ";
 				pstmt = conn.prepareStatement(query);
-				pstmt.setString(1,phvo.getName() );
-				pstmt.setString(2,phvo.getHp() );
-				pstmt.setString(3,phvo.getCompany() );
-				pstmt.setInt(4, phvo.getPersonid());
+				pstmt.setString(1,name);
+				pstmt.setString(2,hp );
+				pstmt.setString(3,company );
+				pstmt.setInt(4, personId);
+				System.out.println(query);
 				count = pstmt.executeUpdate(); // update
 
 				// 4.결과처리
@@ -166,5 +167,51 @@ public class PhoneDao {
 
 	}
 	//검색
-	
+public List<PhoneVo> phoneSearch(String searchWord) {
+		
+		List<PhoneVo> phoneVoList = new ArrayList<PhoneVo>();
+		
+		getConnection();
+		
+		searchWord = "%" + searchWord + "%";
+		
+		try {	
+			// 3. SQL문 준비 / 바인딩 / 실행
+			String query = "";
+			query += " select	person_id,";
+			query += "			name,";
+			query += "			hp,";
+			query += "			company";
+			query += " from person";
+			query += " where name like ?";
+			query += " or hp like ?";
+			query += " or company like ?";
+
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setString(1, searchWord);
+			pstmt.setString(2, searchWord);
+			pstmt.setString(3, searchWord);
+			
+			rs = pstmt.executeQuery();
+	        
+			// 4.결과처리
+			while(rs.next()){
+				int personId = rs.getInt("person_id");
+				String name = rs.getString("name");
+				String hp = rs.getString("hp");
+				String company = rs.getString("company");
+				
+				PhoneVo phoneVo = new PhoneVo(personId, name, hp, company);
+				phoneVoList.add(phoneVo);
+			}
+		
+		} catch (SQLException e) {
+		    System.out.println("error:" + e);
+		} 
+
+		close();
+		
+		return phoneVoList;
+}
 }
