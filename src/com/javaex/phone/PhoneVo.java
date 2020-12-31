@@ -9,7 +9,7 @@ public class PhoneVo {
 	//생성자
 	public PhoneVo() {
 		super();
-	}
+	}//저장 수정 
 	public PhoneVo(int personid, String name, String hp, String company) {
 		this.personid = personid;
 		this.name = name;
@@ -20,7 +20,7 @@ public class PhoneVo {
 		this.name = name;
 		this.hp = hp;
 		this.company = company;
-	}
+	} //삭제
 	public PhoneVo(int personid) {
 		super();
 		this.personid = personid;

@@ -80,7 +80,6 @@ public class PhoneDao {
 			getConnection();
 		try {
 		    // 3. SQL문 준비 / 바인딩 / 실행
-			//"INSERT INTO person VALUES (seq_person_id.nextval,?,?,?)"
 			String query ="DELETE FROM person WHERE person_id = ?";
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, personid);
