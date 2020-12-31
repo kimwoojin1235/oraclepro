@@ -15,7 +15,12 @@ CREATE TABLE person(
 CREATE SEQUENCE seq_person_id
 INCREMENT BY 1 
 START WITH 1 ;
-
+--SELECT
+SELECT  person_id,
+        name,
+        hp,
+        company
+FROM person;
 --전화번호 생성
 INSERT INTO person VALUES (seq_person_id.nextval,'이효리','010-1111-1111','02-1111-1111');
 
@@ -25,16 +30,7 @@ UPDATE person SET name ='김00',hp='11111111',company='111111' WHERE person_id =
 --전화번호 삭제
 DELETE FROM person WHERE person_id = 1;
 
-
---SELECT
-SELECT  person_id,
-        name,
-        hp,
-        company
-FROM person;
-
-
---검색
+--전화번호 검색
 select  person_id,
         name,
         hp,
@@ -43,6 +39,10 @@ from person
 where name like '%3%'
 or hp like '%3%'
 or company like '%3%';
+
+
+
+
 
 
 
