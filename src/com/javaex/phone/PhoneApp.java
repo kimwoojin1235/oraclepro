@@ -77,8 +77,10 @@ public class PhoneApp {
 				pVo = phoneDao.phoneSearch(Search);
 				
 				for(int i=0; i<pVo.size();i++) {
-					System.out.println(pVo.get(i).getPersonid()+ ".   " +pVo.get(i).getName()+ "    " +pVo.get(i).getHp()+ "   "+pVo.get(i).getCompany());
+					System.out.println(pVo.get(i).getPersonid()+ ".   " +pVo.get(i).getName()+ "    " +
+				pVo.get(i).getHp()+ "   "+pVo.get(i).getCompany());
 				}
+				break;
 			case 6:
 				System.out.println("******************************************");
 				System.out.println("*               감사합니다               *");
