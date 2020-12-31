@@ -96,7 +96,7 @@ public class PhoneDao {
 		
 		
 		//번호수정
-		public int personUpdate(int personId, String name, String hp, String company ) {
+		public int personUpdate(PhoneVo pvo ) {
 			getConnection();
 			int count = 0;
 			try {
@@ -111,10 +111,10 @@ public class PhoneDao {
 				
 				pstmt = conn.prepareStatement(query);
 				
-				pstmt.setString(1,name);
-				pstmt.setString(2,hp);
-				pstmt.setString(3,company );
-				pstmt.setInt(4, personId);
+				pstmt.setString(1,pvo.getName());
+				pstmt.setString(2,pvo.getHp());
+				pstmt.setString(3,pvo.getCompany() );
+				pstmt.setInt(4, pvo.getPersonid());
 				count = pstmt.executeUpdate();
 
 				// 4.결과처리

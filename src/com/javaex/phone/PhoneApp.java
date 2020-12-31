@@ -22,7 +22,7 @@ public class PhoneApp {
 		while(a) {	
 			System.out.println("1.리스트|2.등록|3.수정|4.삭제|5.검색|6.종료");
 			System.out.println("---------------------------------");
-			System.out.print(">메뉴번호: ");
+			System.out.print("메뉴번호: ");
 			menu=sc.nextInt();
 			switch (menu) {
 			case 1:
@@ -35,12 +35,12 @@ public class PhoneApp {
 				break;
 			case 2:
 				System.out.println("<2.등록>");
-				System.out.print(">이름:");
+				System.out.print("이름:");
 				sc.nextLine(); 
 				name = sc.nextLine();
-				System.out.print(">휴대전화:");
+				System.out.print("휴대전화:");
 				hp = sc.nextLine();
-				System.out.print(">회사전화:");
+				System.out.print("회사전화:");
 				company = sc.nextLine();
 				
 				PhoneVo person = new PhoneVo(name, hp, company);
@@ -50,28 +50,28 @@ public class PhoneApp {
 				break;
 			case 3:
 				System.out.println("<3.수정>");
-				System.out.print(">번호:");
+				System.out.print("번호:");
 				num = sc.nextInt();
-				System.out.print(">이름:");
+				System.out.print("이름:");
 				sc.nextLine(); 
 				name = sc.nextLine();
-				System.out.print(">휴대전화:");
+				System.out.print("휴대전화:");
 				hp = sc.nextLine();
-				System.out.print(">회사전화:");
+				System.out.print("회사전화:");
 				company = sc.nextLine();
-				
-				phoneDao.personUpdate(num,name, hp, company);
+				PhoneVo per =new PhoneVo(num,name, hp, company);
+				phoneDao.personUpdate(per);
 				break;
 			case 4:
 				System.out.println("<4.삭제>");
-				System.out.print(">번호:");
+				System.out.print("번호:");
 				num = sc.nextInt();
 				phoneDao.persondelete(num);
 				break;
 				
 			case 5:
 				sc.nextLine();
-				System.out.print("검색어 > ");
+				System.out.print("검색어: ");
 				Search = sc.nextLine();
 				
 				pVo = phoneDao.phoneSearch(Search);
@@ -83,7 +83,7 @@ public class PhoneApp {
 				break;
 			case 6:
 				System.out.println("******************************************");
-				System.out.println("*               감사합니다               *");
+				System.out.println("                감사합니다                                  ");
 				System.out.println("******************************************");
 				a = false;
 				break;
